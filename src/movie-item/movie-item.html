@@ -1,0 +1,31 @@
+<dom-module id="movie-item">
+    <template>
+        <li>
+            <label>[[index]]. [[name]]</label>
+            <button on-tap="delete">Delete</button>
+        </li>
+    </template>
+    <style>
+        :host {
+            display: block;
+        }
+    </style>
+    <script>
+        Polymer({
+            is: 'movie-item',
+            properties: {
+                index: {
+                    type: Number,
+                    value: -1
+                },
+                name: {
+                    type: String,
+                    value: ''
+                }
+            },
+            delete: function () {
+                this.fire('delete', {name: this.name})
+            }
+        });
+    </script>
+</dom-module>

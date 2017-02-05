@@ -1,0 +1,7 @@
+{
+  "name": "Polymer-Example",
+  "short_name": "Polymer-Example",
+  "description": "A Polymer Example",
+  "start_url": "/",
+  "display": "standalone"
+}
