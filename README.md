@@ -3,6 +3,6 @@
 1. npm install -g polymer-cli
 2. bower install
 ## Run
-polymer serve
+1. polymer serve
 ##Build
-polymer build
+1. polymer build
