@@ -1,5 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../movie-item/movie-item.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
 
 <dom-module id="movie-app">
   <template>
@@ -7,20 +9,27 @@
       :host {
         display: block;
       }
+
       ul{
         list-style: none;
         padding: 0;
         width: 20rem;
       }
+
+      paper-button {
+        background: steelblue;
+        color: floralwhite;
+      }
+
     </style>
-    <h2>Movies</h2>
+    <h2>My Movies</h2>
     <ul>
       <template is="dom-repeat" items="[[movies]]">
         <movie-item index="[[index]]" name="[[item]]" on-delete="onDelete"></movie-item>
       </template>
       <li>
-        <input type="text" value="{{_newMovie::input}}" title="Movie Name"/>
-        <button on-tap="add">Add</button>
+        <paper-input type="text" value="{{_newMovie::input}}" title="Movie Name"></paper-input>
+        <paper-button on-tap="add">Add</paper-button>
       </li>
     </ul>
   </template>
