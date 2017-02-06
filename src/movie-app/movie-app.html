@@ -7,15 +7,22 @@
       :host {
         display: block;
       }
+      ul{
+        list-style: none;
+        padding: 0;
+        width: 20rem;
+      }
     </style>
     <h2>Movies</h2>
     <ul>
       <template is="dom-repeat" items="[[movies]]">
         <movie-item index="[[index]]" name="[[item]]" on-delete="onDelete"></movie-item>
       </template>
+      <li>
+        <input type="text" value="{{_newMovie::input}}" title="Movie Name"/>
+        <button on-tap="add">Add</button>
+      </li>
     </ul>
-    <input type="text" value="{{_newMovie::input}}" title="Movie Name"/>
-    <button on-tap="add">Add</button>
   </template>
 
   <script>
@@ -37,11 +44,7 @@
         this.push('movies', this._newMovie)
       },
       onDelete: function (event) {
-        for(var i = 0, len = this.movies.length; i < len; i++) {
-          if(this.movies[i] === event.detail.name) {
-            this.splice('movies', i, 1);
-          }
-        }
+          this.splice('movies', event.detail.index, 1);
       }
     });
   </script>
