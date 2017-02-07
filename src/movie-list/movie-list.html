@@ -1,6 +1,9 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="../movie-it/movie-it.html">
 <link rel="import" href="bower_components/paper-button/paper-button.html">
 <link rel="import" href="bower_components/paper-input/paper-input.html">
+<link rel="import" href="bower_components/paper-item/paper-item.html">
+
 
 <!--
 `movie-list`
@@ -34,7 +37,7 @@ Movie List Example
         <movie-it index="[[index]]" name="[[item]]" on-delete="onDelete"></movie-it>
       </template>
       <li>
-        <paper-input type="text" value="{{_newMovie::input}}" title="Movie Name"></paper-input>
+        <paper-input type="text" value="{{_newMovie}}" title="Movie Name"></paper-input>
         <paper-button on-tap="add">Add</paper-button>
       </li>
     </ul>
