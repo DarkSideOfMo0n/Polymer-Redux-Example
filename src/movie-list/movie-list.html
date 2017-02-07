@@ -1,0 +1,67 @@
+<link rel="import" href="../movie-it/movie-it.html">
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="bower_components/paper-input/paper-input.html">
+
+<!--
+`movie-list`
+Movie List Example
+
+@demo demo/index.html 
+-->
+
+<dom-module id="movie-list">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      ul{
+        list-style: none;
+        padding: 0;
+        width: 20rem;
+      }
+
+      paper-button {
+        background: steelblue;
+        color: floralwhite;
+      }
+
+    </style>
+    <h2>My Movies</h2>
+    <ul>
+      <template is="dom-repeat" items="[[movies]]">
+        <movie-it index="[[index]]" name="[[item]]" on-delete="onDelete"></movie-it>
+      </template>
+      <li>
+        <paper-input type="text" value="{{_newMovie::input}}" title="Movie Name"></paper-input>
+        <paper-button on-tap="add">Add</paper-button>
+      </li>
+    </ul>
+  </template>
+
+  <script>
+      Polymer({
+
+          is: 'movie-list',
+
+          properties: {
+              movies: {
+                  type: Array,
+                  value: []
+              },
+              _newMovie: {
+                  type: String,
+                  value: ''
+              }
+          },
+          add: function () {
+              this.push('movies', this._newMovie)
+          },
+          onDelete: function (event) {
+              this.splice('movies', event.detail.index, 1);
+          }
+      });
+  </script>
+</dom-module>
+

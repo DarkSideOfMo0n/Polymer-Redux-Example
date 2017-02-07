@@ -1,0 +1,45 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<!--
+`movie-it`
+Movie Element
+
+@demo demo/index.html 
+-->
+
+<dom-module id="movie-it">
+  <template>
+    <style>
+      :host {
+        display: block;
+        position: relative;
+      }
+      button{
+        position: absolute;
+        right: 0;
+      }
+    </style>
+    <li>
+      <label> [[index]]. [[name]]</label>
+      <button id="deleteButton" on-tap="deleteMovie">Delete</button>
+    </li>
+  </template>
+  <script>
+      Polymer({
+          is: 'movie-it',
+          properties: {
+              index: {
+                  type: Number,
+                  value: -1
+              },
+              name: {
+                  type: String,
+                  value: ''
+              }
+          },
+          deleteMovie: function () {
+              this.fire('delete', {index: this.index})
+          }
+      });
+  </script>
+</dom-module>
