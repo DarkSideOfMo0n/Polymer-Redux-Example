@@ -6,5 +6,5 @@
 ## Run
 1. polymer serve
 
-##Build
+## Build
 1. polymer build

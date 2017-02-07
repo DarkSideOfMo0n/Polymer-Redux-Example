@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>movie-list test</title>
+    <title>movie-it test</title>
 
     <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <script>
@@ -15,25 +15,22 @@
     </script>
     <script src="/bower_components/web-component-tester/browser.js"></script>
 
-    <link rel="import" href="../movie-list.html">
-    <link rel="import" href="../../movie-item/movie-item.html">
+    <link rel="import" href="../movie-item.html">
 </head>
 <body>
 <test-fixture id="basic">
     <template>
-        <movie-list>
-            <movie-item index="1" name="Kung Fu Panda"></movie-item>
-            <movie-item index="2" name="Star Wars Rouge One"></movie-item>
-            <movie-item index="3" name="Terminator 1"></movie-item>
-        </movie-list>
+        <movie-item index="1" name="Kung Fu"></movie-item>
     </template>
 </test-fixture>
 
 <script>
-    suite('movie-list', function () {
+    suite('movie-it', function () {
         test('instantiating the element works', function () {
             var element = fixture('basic');
-            assert.equal(element.is, 'movie-list');
+            assert.equal(element.is, 'movie-it');
+            assert.equal(element.index, 1);
+            assert.equal(element.name, "Kung Fu");
         });
     });
 </script>

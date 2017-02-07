@@ -1,0 +1,48 @@
+<link rel="import" href="/bower_components/paper-item/paper-item.html">
+
+<!--
+`movie-item`
+Movie Element
+
+@demo src/movie-item/demo/index.html
+-->
+
+<dom-module id="movie-item">
+    <template>
+        <paper-item>
+            <label>[[index]]. [[name]]</label>
+            <paper-button id="deleteButton" on-tap="deleteMovie">Delete</paper-button>
+        </paper-item>
+    </template>
+    <style>
+        :host {
+            display: block;
+            position: relative;
+        }
+
+        paper-button {
+            background: indianred;
+            color: floralwhite;
+            position: absolute;
+            right: 0;
+        }
+    </style>
+    <script>
+        Polymer({
+            is: 'movie-item',
+            properties: {
+                index: {
+                    type: Number,
+                    value: -1
+                },
+                name: {
+                    type: String,
+                    value: ''
+                }
+            },
+            deleteMovie: function () {
+                this.fire('delete', {index: this.index})
+            }
+        });
+    </script>
+</dom-module>
