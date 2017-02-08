@@ -1,0 +1,19 @@
+<link rel="import" href="redux-import.html">
+<link rel="import" href="/bower_components/polymer-redux/polymer-redux.html">
+<script type="application/javascript">
+    var reducer = function(state, action) {
+        state = state || { movies: [] };
+        switch (action.type) {
+            case 'movie-add':
+                state.movies.push(action.movie);
+                return JSON.parse(JSON.stringify(state));
+            case 'movie-delete':
+                state.movies.splice(action.index, 1);
+                return JSON.parse(JSON.stringify(state));
+            default:
+                return state;
+        }
+    };
+    var store = Redux.createStore(reducer, window.devToolsExtension());
+    reduxBehavior = PolymerRedux(store);
+</script>

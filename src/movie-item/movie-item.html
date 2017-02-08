@@ -1,5 +1,7 @@
 <link rel="import" href="/bower_components/paper-item/paper-item.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
 
+<link rel="import" href="../redux-behavior/redux-behavior.html">
 <!--
 `movie-item`
 Movie Element
@@ -30,6 +32,7 @@ Movie Element
     <script>
         Polymer({
             is: 'movie-item',
+            behaviors: [ reduxBehavior ],
             properties: {
                 index: {
                     type: Number,
@@ -40,8 +43,16 @@ Movie Element
                     value: ''
                 }
             },
+            actions: {
+                deleteMovie: function (index) {
+                    return {
+                        type: 'movie-delete',
+                        index: index
+                    }
+                }
+            },
             deleteMovie: function () {
-                this.fire('delete', {index: this.index})
+                this.dispatch('deleteMovie', this.index)
             }
         });
     </script>

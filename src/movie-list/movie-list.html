@@ -3,6 +3,7 @@
 <link rel="import" href="/bower_components/paper-item/paper-item.html">
 
 <link rel="import" href="../movie-item/movie-item.html">
+<link rel="import" href="../redux-behavior/redux-behavior.html">
 
 <!--
 `movie-list`
@@ -44,24 +45,34 @@ Movie List Example
 
     <script>
         Polymer({
-
             is: 'movie-list',
-
+            behaviors: [reduxBehavior],
             properties: {
                 movies: {
                     type: Array,
-                    value: []
+                    statePath: function (state) {
+                        return state.movies
+                    },
+                    observer: '_moviesChanged'
                 },
                 _newMovie: {
                     type: String,
                     value: ''
                 }
             },
-            add: function () {
-                this.push('movies', this._newMovie)
+            actions: {
+              addMovie: function (movie) {
+                  return {
+                      type: 'movie-add',
+                      movie: movie
+                  }
+              }
             },
-            onDelete: function (event) {
-                this.splice('movies', event.detail.index, 1);
+            add: function () {
+                this.dispatch('addMovie', this._newMovie)
+            },
+            _moviesChanged: function () {
+                console.log(arguments);
             }
         });
     </script>
