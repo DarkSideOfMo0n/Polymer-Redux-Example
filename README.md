@@ -8,3 +8,6 @@
 
 ## Build
 1. polymer build
+
+## Test
+1. polymer test

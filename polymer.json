@@ -1,0 +1,9 @@
+{
+  "entrypoint": "index.html",
+  "sources": [
+    "bower.json"
+  ],
+  "includeDependencies": [
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+  ]
+}
