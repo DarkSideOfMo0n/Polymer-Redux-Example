@@ -69,7 +69,8 @@ Movie List Example
               }
             },
             add: function () {
-                this.dispatch('addMovie', this._newMovie)
+                this.dispatch('addMovie', this._newMovie);
+                this.set('_newMovie', '')
             },
             _moviesChanged: function () {
                 console.log(arguments);
